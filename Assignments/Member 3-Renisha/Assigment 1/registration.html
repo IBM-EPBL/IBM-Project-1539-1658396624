@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {box-sizing: border-box}
+
+.container {
+  padding: 40px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=email],input[type=number] {
+  width: 70%;
+  padding: 15px;
+  margin: 20px 0 22px 0;
+  display: block;
+  border:dotted burlywood;
+  background: #f1f1f1;
+}
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+.registerbtn {
+  background-color: blueviolet;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 30%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity:1;
+}
+
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+    </style>
+    <title>Document</title>
+
+</head>
+<body>
+    <form action="/action_page.php">
+        <div class="container">
+          <h1>Registeration Page</h1>
+          <hr>
+      
+          <label for="Name"><b>Name : </b></label>
+          <input type="text" placeholder="Enter Name" name="name" id="name" required>
+      
+          <label for="email"><b>Email : </b></label>
+          <input type="text" placeholder="Enter Email" name="email" id="email" required>
+      
+          <label for="Mobile number"><b>Mobile Number : </b></label>
+          <input type="number" placeholder="Mobile Number" name="Mobile Number" id="Mobile Number" required>
+          <label for="City"><b>City : </b></label>
+          <select>
+            <option value="City">City</option>
+            <option value="Sivakasi">Sivakasi</option>
+            <option value="Virudhunagar">Virudhunagar</option>
+            <option value="Madurai">Madurai</option>
+            <option value="Tirunelveli">Tirunelveli</option>
+            <option value="Srivilliputtur">Srivilliputtur</option>
+            <option value="Coimabatore">Coimabatore</option>
+          </select>
+          <br>
+          <label for="State"><b>State : </b></label>
+          <input type="text" placeholder="Enter State " name="State" id="State" required>  
+          <label for="Country"><b>Country : </b></label>
+          <input type="text" placeholder="Enter Country" name="Country" id="Country" required>  
+          <hr>
+          <button type="submit" class="registerbtn">Register</button>
+        </div> 
+        <div class="container signin">
+          <p>Already have an account? <a href="#">Sign in</a>.</p>
+        </div>
+      </form>
+      
+</body>
+</html>
