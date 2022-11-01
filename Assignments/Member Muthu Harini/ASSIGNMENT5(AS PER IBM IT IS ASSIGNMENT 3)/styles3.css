@@ -1,0 +1,22 @@
+*{
+    background-color: black;
+}
+h3{
+    text-align: center;
+    color: white ;
+}
+.grid-container {
+display: flex;
+}
+img { 
+max-width: 150%;  
+height: 50%;   
+border: 5px solid goldenrod;
+
+}  
+.item {
+flex: 33.33%;
+
+padding: 2px;
+}
+</style>
