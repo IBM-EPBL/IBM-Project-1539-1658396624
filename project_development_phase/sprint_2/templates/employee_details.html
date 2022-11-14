@@ -1,0 +1,176 @@
+{% extends 'sidebar.html' %} {% block styling %}
+<style>
+  *:before,
+  *:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+  }
+  body {
+    height: 100vh;
+    background: linear-gradient(135deg, #6f6df4, #4c46f5);
+  }
+  .supplycontainer {
+    background-color: #ffffff;
+    width: 95%;
+    min-width: 95%;
+    padding: 35px 50px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 10px;
+    box-shadow: 20px 30px 25px rgba(0, 0, 0, 0.15);
+  }
+  h1 {
+    font-size: 30px;
+    text-align: center;
+    color: #1c093c;
+  }
+  p {
+    position: relative;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    color: #606060;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  form {
+    width: 100%;
+    position: relative;
+    margin: 30px auto 0 auto;
+  }
+  .row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px 30px;
+    margin-bottom: 20px;
+  }
+  label {
+    color: #1c093c;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  textarea,
+  input {
+    width: 100%;
+    font-weight: 400;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1.2px solid #c4cae0;
+    margin-top: 5px;
+  }
+  textarea {
+    resize: none;
+  }
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: #6f6df4;
+  }
+  button {
+    border: none;
+    padding: 10px 20px;
+    background: linear-gradient(130deg, #6f6df4, #4c46f5);
+    color: #ffffff;
+    border-radius: 3px;
+    justify-items: space-between;
+    align-items: center;
+  }
+  .saveone {
+    background: rgb(82, 236, 82);
+    color: beige;
+    margin-left: 100px;
+    margin-right: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .upone {
+    background: rgb(82, 179, 236);
+    color: beige;
+    margin: 20px 50px;
+  }
+  .delone {
+    background: rgb(236, 82, 210);
+    color: beige;
+    margin: 20px 50px;
+  }
+  input[type="submit"] {
+    width: 19%;
+    height: 50px;
+    margin:20px 10px;
+    border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+  }
+  input[type="submit"]:hover {
+    border-color: #2691d9;
+    transition: 0.5s;
+    font-size: 16px;
+    color: #666666;
+  }
+</style>
+{% endblock %} {% block content %}
+<div class="supplycontainer">
+  <h1>Customer Management</h1>
+  <p>Please fill the below details</p>
+  <form method="post" action="/addCust" >
+    <div class="row">
+      <div class="column">
+        <label for="invoice_number">Emp ID</label>
+        <input
+          type="text"
+          id="emp"
+          name="empid"
+          placeholder="Enter Employee number"
+        />
+      </div>
+      <div class="column">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter Email address"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <label for="supplier_name">Customer Name</label>
+        <input
+          type="text"
+          id="supplier_name"
+          name="user"
+          placeholder="Enter Customer Name"
+        />
+      </div>
+      <div class="column">
+        <label for="phone_number">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="pass"
+          placeholder="Enter password"
+        />
+      </div>
+    </div>
+
+    <div class="icon">
+      <input type="submit" value="Add" name="action1" />
+      <input type="submit" value="Update" />
+      <input type="submit" value="Delete" />
+      <input type="submit" value="Show" name="sho"/>
+    </div>
+  </form>
+
+  {% endblock %}
+</div>
