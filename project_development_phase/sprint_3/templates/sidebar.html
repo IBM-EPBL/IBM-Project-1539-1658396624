@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard sidebar</title>
+    <!--<link rel="stylesheet" type="text/css" href="D:\project_development_phase\sprint_2\static\css\sidebarc.css">-->
+    {% block styling %}
+    {% endblock %}
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebarc.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class ="navigation">
+            <ul>
+                <li>
+                    <a href="./dashboardfinal.html">
+                        <span class="icon"><ion-icon name="logo-apple-appstore"></ion-icon></span>
+                        <span class="title">Inventory Management</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./dashboardfinal.html">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></ion-icon></ion-icon></span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./employee_details.html">
+                        <span class="icon"><ion-icon name="document-text-outline"></ion-icon></span>
+                        <span class="title">Customer management</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./supplier.html">
+                        <span class="icon"><ion-icon name="subway-outline"></ion-icon></span>
+                        <span class="title">Supplier</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./categories.html">
+                        <span class="icon"><ion-icon name="file-tray-stacked-outline"></ion-icon></span>
+                        <span class="title">Categories</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./product.html">
+                        <span class="icon"><ion-icon name="cart-outline"></ion-icon></ion-icon></span>
+                        <span class="title">Product</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./sales.html">
+                        <span class="icon"><ion-icon name="trending-up-outline"></ion-icon></span>
+                        <span class="title">Sales</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./orders.html">
+                        <span class="icon"><ion-icon name="trending-up-outline"></ion-icon></span>
+                        <span class="title">Orders</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./login.html">
+                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- main -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+                <span space="20px"> 
+                <!-- search -->
+                <div class="search">
+                    <label>  
+                        <input type="text" placeholder="Search here">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+            </span>
+                <!-- userimage -->
+               <div class="user">
+                    <img src="{{ url_for('static', filename='images/user.jpeg') }}">
+                </div>
+            </div>
+            {% block content %}
+            
+            {% endblock %}
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="{{url_for('static', filename='\javascript\barchart.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.3/apexcharts.min.js" ></script>
+{% block script %}
+{% endblock %}
+<script >
+    //menu toggle
+    let toggle=document.querySelector('.toggle');
+    let navigation=document.querySelector('.navigation')
+    let main=document.querySelector('.main');
+    toggle.onclick=function()
+    {
+        navigation.classList.toggle('active');
+        main.classList.toggle('active');
+
+    }
+    let list=document.querySelectorAll('.navigation li')
+    function activeLink()
+    {
+        list.forEach((item) =>
+        item.classList.remove('hovered'));
+        this.classList.add('hovered');
+    }
+    list.forEach((item) => 
+    item.addEventListener('mouseover',activeLink));
+</script>
+</body>
+</html>

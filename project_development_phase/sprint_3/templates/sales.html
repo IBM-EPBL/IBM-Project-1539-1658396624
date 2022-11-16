@@ -1,0 +1,207 @@
+{% extends 'sidebar.html' %} 
+{% block styling %}
+<style>
+    *:before,
+*:after{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+    font-family: "Poppins",sans-serif;
+    font-weight: 500;
+}
+body
+    {
+        height:100vh;
+        background:linear-gradient(
+            135deg,#6f6df4,#4c46f5);
+    }
+
+h1
+{
+    margin:20px 20px;
+    font-size: 30px;
+    text-align: center;
+    color:#1c093c;
+
+}
+
+    table {
+        position: relative;
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 95%;
+
+      margin:10px 15px;
+      padding:30px 20px;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    .graphBox
+  {
+    position: relative;
+    width:100;
+    padding:20px;
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 30px;
+    min-height: 200px;
+  }
+  .graphBox .box{
+    position: relative;
+    background: #fff;;
+    padding:20px;
+    width:100%;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+    border-radius:20px;
+  }
+  .chart-title
+  {
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 600;
+
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="salesdone">
+  <div class="tabledisplay">
+<h1>RECENT SALES</h1>
+
+<table>
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <tbody>
+        {% for k,l in data %}
+        <tr>
+          <td>{{ k }}</td>
+          <td>{{ l }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </div>
+      <div class="graphBox">
+        <div class="box">
+        <p class="chart-title">Top 5 products</p>
+        <div id="bar-chart"></div>
+        <!-- <canvas id="myChart" ></canvas>-->
+    </div>
+        <div class="box">
+            <p class="chart-title">Purchase and Sales Orders</p>
+        <div id="area-chart"></div>
+        </div>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.3/apexcharts.min.js" ></script>
+<script>
+    var barChartOptions = {
+    series: [{
+    data: [10,8,6,4,2]
+  }],
+    chart: {
+    type: 'bar',
+    height: 350,
+    toolbar:{
+        show:false
+    },
+  },
+  colors:[
+    "#246dec",
+    "#cc3c43",
+    "#367952",
+    "#f5b74f",
+    "#4f35a1"
+],
+  plotOptions: {
+    bar: {
+        distributed:true,
+      borderRadius: 4,
+      horizontal: false,
+      columnWidth:'40%'
+    }
+  },
+  dataLabels: {
+    enabled: false
+  },
+  legend:{
+    show:false
+  },
+  xaxis: {
+    categories: ["Laptop","Phone","Monitor","Headphones","camera"],
+  },
+  yaxis:{
+    title:{
+        text:"Count"
+    }
+  }
+  };
+  var barchart = new ApexCharts(document.querySelector("#bar-chart"), barChartOptions);
+  barchart.render();
+
+   
+  var areaChartOptions = {
+          series: [{
+          name: 'Purchase Orders',
+          type: 'area',
+          data: [31,40,28,51,42,109,100]
+        }, {
+          name: 'Sales Orders',
+          type: 'line',
+          data: [11,32,45,32,34,52,41]
+        }],
+          chart: {
+          height: 350,
+          type: 'area',
+          toolbar:{
+            show:false,
+          },
+        },
+        colors: ["#4f35a1","246dec"],
+        dataLabels:{
+            enabled:false,
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        
+        labels:["Jan","Feb","March","Apr","May","jun","july"],
+        markers: {
+          size: 0
+        },
+        yaxis: [
+          {
+            title: {
+              text: 'Purchase Orders',
+            },
+          },
+          {
+            opposite: true,
+            title: {
+              text: 'Sales Orders',
+            },
+          },
+        ],
+        tooltip: {
+          shared: true,
+          intersect: false,
+        }
+        };
+
+        var areachart = new ApexCharts(document.querySelector("#area-chart"), areaChartOptions);
+        areachart.render();
+      
+</script>
+
+{% endblock %}   

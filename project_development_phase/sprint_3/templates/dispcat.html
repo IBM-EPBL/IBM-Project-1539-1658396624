@@ -1,0 +1,80 @@
+{% extends 'sidebar.html' %} 
+{% block styling %}
+<style>
+  *:before,
+*:after{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+    font-family: "Poppins",sans-serif;
+    font-weight: 500;
+}
+body
+    {
+        height:100vh;
+        background:linear-gradient(
+            135deg,#6f6df4,#4c46f5);
+    }
+    .cate
+    {
+      background-color: #ffffff;
+    width:95%;
+    min-width:95%;
+    padding:35px 50px;
+    transform:translate(-50%,-50%);
+    position:absolute;
+    top:50%;
+    margin:20px 30px;
+    left:47%;
+      align-items: center;
+    border-style: groove;
+    border-radius:10px;
+    box-shadow: 20px 30px 25px rgba(0,0,0,0.15);
+    border-color: #1c093c;
+}
+
+h1
+{
+    margin: 50px 50px;
+    font-size: 30px;
+    text-align: center;
+    color:#1c093c;
+
+}
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+    margin:50px 15px;
+    padding:30px 20px;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  </style>
+ {% endblock %} 
+ {% block content %}
+ <div class="cate">
+  <h1>CATEGORIES</h1>
+<table>
+  <tr>
+    <th>CATEGORIES</th>
+    <tbody>
+      {% for k in data %}
+      <tr>
+        <td>{{ k }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </tr>
+</table>
+</div>
+{% endblock %}
+

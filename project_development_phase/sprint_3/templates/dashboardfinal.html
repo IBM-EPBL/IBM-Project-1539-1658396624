@@ -1,0 +1,279 @@
+{% extends 'sidebar.html' %}
+{% block styling %}
+<style>
+    .cardbox
+    {
+        position:relative;
+        width:100%;
+        padding:20px;
+        display:grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-gap: 20px;
+
+    }
+  .cardbox .card{
+    position: relative;
+    background-color: var(--white);
+    padding:25px;
+    border-radius:15px;
+    display:flex;
+    justify-content:space-between;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+
+  }  
+  .cardbox .card .numbers
+  {
+    position:relative;
+    font-weight:500;
+    font-size: 2.5em;
+    color:var(--blue);
+  }
+  .cardbox .card .cardName 
+  {
+    color:var(--black2);
+    font-size:1.1em;
+    margin-top:5px;
+
+  } 
+  .cardbox .card .iconBx
+  {
+    font-size: 3em;
+    color: var(--black2);
+  }
+  .cardbox .card:hover{
+    background: var(--blue);
+  }
+  .cardbox .card:hover .numbers,
+  .cardbox .card:hover .cardName,
+  .cardbox .card:hover .iconBx{
+    color:var(--white);
+  }
+  /*charts*/
+  .graphBox
+  {
+    position: relative;
+    width:100;
+    padding:20px;
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 30px;
+    min-height: 200px;
+  }
+  .graphBox .box{
+    position: relative;
+    background: #fff;;
+    padding:20px;
+    width:100%;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+    border-radius:20px;
+  }
+  .chart-title
+  {
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 600;
+
+  }
+  @media(max-width:991px)
+  {
+    /*.graphBox
+    {
+        grid-template-columns:1fr;
+        height: auto;
+    }*/
+    .navigation
+    {
+        left:-300px;
+    }
+    .navigation.active{
+        width:100%;
+        left:0;
+    }
+    .main
+    {
+        width:100%;
+        left:0;
+    }
+    .main.active
+    {
+        left: 300px;
+
+    }
+    .cardbox
+    {
+        grid-template-columns: repeat(2,1fr);
+    }
+  }
+</style>
+{% endblock %}
+{% block content %}
+<div class="cardbox">
+    <div class="card">
+        <div>
+            <div class="numbers">{{yes}}</div>
+            <div class="cardName">Employees</div>
+        </div>
+        <div class="iconBx">
+            <ion-icon name="accessibility-outline"></ion-icon>
+        </div>
+    </div>
+    <div class="card">
+        <div>
+            <div class="numbers">{{ye}}</div>
+            <div class="cardName">suppliers</div>
+        </div>
+        <div class="iconBx">
+            <ion-icon name="people-outline"></ion-icon>
+            </div>
+    </div>
+    <div class="card">
+        <div>
+            <div class="numbers">{{cate}}</div>
+            <div class="cardName">categories</div>
+        </div>
+        <div class="iconBx">
+            <ion-icon name="copy-outline"></ion-icon>
+        </div>
+    </div>
+    <div class="card">
+        <div>
+            <div class="numbers">{{pro}}</div>
+            <div class="cardName">Products</div>
+        </div>
+        <div class="iconBx">
+            <ion-icon name="qr-code-outline"></ion-icon>
+        </div>
+    </div>
+</div>
+<!-- charts -->
+<div class="graphBox">
+    <div class="box">
+    <p class="chart-title">Top 5 products</p>
+    <div id="bar-chart"></div>
+    <!-- <canvas id="myChart" ></canvas>-->
+</div>
+    <div class="box">
+        <p class="chart-title">Purchase and Sales Orders</p>
+    <div id="area-chart"></div>
+    </div>
+</div>
+
+<!-- data list -->
+<!--<div class="details">
+    <div class="recentorders">
+        <div class="cardheader">
+            <h2>Recent Orders</h2>
+            <a href="#" class="btn">View all</a>
+        </div>
+    </div>
+</div>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.3/apexcharts.min.js" ></script>
+<script>
+    var barChartOptions = {
+    series: [{
+    data: [10,8,6,4,2]
+  }],
+    chart: {
+    type: 'bar',
+    height: 350,
+    toolbar:{
+        show:false
+    },
+  },
+  colors:[
+    "#246dec",
+    "#cc3c43",
+    "#367952",
+    "#f5b74f",
+    "#4f35a1"
+],
+  plotOptions: {
+    bar: {
+        distributed:true,
+      borderRadius: 4,
+      horizontal: false,
+      columnWidth:'40%'
+    }
+  },
+  dataLabels: {
+    enabled: false
+  },
+  legend:{
+    show:false
+  },
+  xaxis: {
+    categories: ["Laptop","Phone","Monitor","Headphones","camera"],
+  },
+  yaxis:{
+    title:{
+        text:"Count"
+    }
+  }
+  };
+
+  var barchart = new ApexCharts(document.querySelector("#bar-chart"), barChartOptions);
+  barchart.render();
+
+   
+  var areaChartOptions = {
+          series: [{
+          name: 'Purchase Orders',
+          type: 'area',
+          data: [31,40,28,51,42,109,100]
+        }, {
+          name: 'Sales Orders',
+          type: 'line',
+          data: [11,32,45,32,34,52,41]
+        }],
+          chart: {
+          height: 350,
+          type: 'area',
+          toolbar:{
+            show:false,
+          },
+        },
+        colors: ["#4f35a1","246dec"],
+        dataLabels:{
+            enabled:false,
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        
+        labels:["Jan","Feb","March","Apr","May","jun","july"],
+        markers: {
+          size: 0
+        },
+        yaxis: [
+          {
+            title: {
+              text: 'Purchase Orders',
+            },
+          },
+          {
+            opposite: true,
+            title: {
+              text: 'Sales Orders',
+            },
+          },
+        ],
+        tooltip: {
+          shared: true,
+          intersect: false,
+        }
+        };
+
+        var areachart = new ApexCharts(document.querySelector("#area-chart"), areaChartOptions);
+        areachart.render();
+      
+</script>
+{% endblock %}
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+<script src="D:\project_development_phase\sprint_2\static\javascript\barchart.js"></script>
+<script src="{{url_for('static', filename='\javascript\my_chart.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.3/apexcharts.min.js" ></script>
+{% endblock %}

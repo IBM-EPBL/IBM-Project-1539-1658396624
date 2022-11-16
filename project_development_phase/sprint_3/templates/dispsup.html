@@ -1,0 +1,44 @@
+{% extends 'sidebar.html' %} 
+{% block styling %}
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin:50px 15px;
+    padding:30px 20px;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  </style>
+ {% endblock %} 
+ {% block content %}
+<table>
+  <tr>
+    <th>Invoice number</th>
+    <th>Email</th>
+    <th>Supplier Name</th>
+    <th>Contact</th>
+    <th>Quantity</th>
+    <tbody>
+      {% for k,l,m,n,o in data %}
+      <tr>
+        <td>{{ k }}</td>
+        <td>{{ l }}</td>
+        <td>{{ m }}</td>
+        <td>{{ n }}</td>
+        <td>{{ o }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </tr>
+</table>
+{% endblock %}
