@@ -1,0 +1,85 @@
+{% extends 'sidebar.html' %} {% block styling %}
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 50px 15px;
+    padding: 30px 20px;
+  }
+
+  td,
+  th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  h1
+{
+    margin: 50px 50px;
+    font-size: 30px;
+    text-align: center;
+    color:#1c093c;
+
+}
+  p{
+    position:relative;
+    margin:auto;
+    width:100%;
+    text-align:right;
+    color:#606060;
+    font-size:20px;
+    font-weight:400;
+}
+  input[type="submit"] {
+    width: 30%;
+    height: 50px;
+    border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    margin:50px 300px;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+  }
+  input[type="submit"]:hover {
+    border-color: #2691d9;
+    transition: 0.5s;
+    font-size: 16px;
+    color: #666666;
+  }
+</style>
+{% endblock %} {% block content %}
+<div class="ecommerce">
+  <h1>ITEMS IN CART </h1>
+  <form method="GET" action="/buynow">
+<table>
+  <tr>
+    <th>Product Name</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Total Cost</th>
+    <tbody>
+      {% for k,l,m,n in data %}
+      <tr>
+        <td>{{ k }}</td>
+        <td>{{ l }}</td>
+        <td>{{ m }}</td>
+        <td>{{ n }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </tr>
+</table>
+<p>Total Cost : {{cost}}</p><br>
+<input type="submit" value="BUY_NOW" name="buy">
+</form>
+</div>
+{% endblock %}
