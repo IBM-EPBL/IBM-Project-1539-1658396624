@@ -1,0 +1,137 @@
+{% extends 'sidebar.html' %} 
+{% block styling %}
+<style>
+*:before,
+*:after{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+    font-family: "Poppins",sans-serif;
+    font-weight: 500;
+}
+body
+    {
+        height:100vh;
+        background:linear-gradient(
+            135deg,#6f6df4,#4c46f5);
+    }
+.delcustcontainer
+{
+    background-color: #ffffff;
+    width:95%;
+    min-width:95%;
+    padding:35px 50px;
+    transform:translate(-50%,-50%);
+    position:absolute;
+    left:50%;
+    top:54%;
+    border-radius:10px;
+    box-shadow: 20px 30px 25px rgba(0,0,0,0.15);
+    border-color: #1c093c;
+}
+h1
+{
+    font-size: 30px;
+    text-align: center;
+    color:#1c093c;
+
+}
+p{
+    position:relative;
+    margin:auto;
+    width:100%;
+    text-align:center;
+    color:#606060;
+    font-size:14px;
+    font-weight:400;
+}
+form{
+    width:100%;
+    position:relative;
+    border-style: double;
+    border-radius: 10px;
+    border-color: #1c093c;
+    margin:30px auto 20px auto;
+    padding: 20px 50px ;
+
+}
+.row
+{
+    width:100%;
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    grid-gap:20px 20px;
+    margin-bottom: 20px;
+
+}
+label{
+    color:#1c093c;
+    font-size:20px;
+    margin-top: 10px;
+    font-weight: 400;
+    margin-left: 100px;
+
+}
+label,input{
+    margin-left:0%;
+}
+textarea,input{
+    width:100%;
+    font-weight:400;
+    padding:10px 10px;
+    border-radius:5px;
+    border:1.2px solid #c4cae0;
+    margin-top: 5px;
+}
+textarea{
+    resize:none;
+}
+input:focus,
+textarea:focus
+{
+    outline:none;
+    border-color:#6f6df4;
+}
+input[type="submit"] {
+    width: 19%;
+    height: 50px;
+    margin:20px 20px;
+    border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+     justify-content: center;
+    outline: none;
+  }
+  input[type="submit"]:hover {
+    border-color: #2691d9;
+    transition: 0.5s;
+    font-size: 16px;
+    color: #666666;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="delcustcontainer">
+    <h1>Delete Customer </h1>
+    <p>Please fill the below details</p>
+    <form method="post" action='/delcus'>
+        <div class="row">
+            <label for="emp_id">Employee ID</label>
+            <input type="text" id="emp_id" name="empid" placeholder="Enter Employee Number">
+        </div>
+        <div class="row">
+            <label for="cust_name">Customer Name</label>
+            <input type="text" id="cust_name" name="user" placeholder="Enter Customer Name">
+        </div>
+        <div class="icon">
+          
+            <input type="submit" value="Delete" name="del"/>
+        
+          </div>
+        </form> 
+</div>
+    {% endblock %}      

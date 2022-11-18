@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+    height: 100vh;
+    background: linear-gradient(135deg, #6f6df4, #4c46f5);
+  }
+
+  h1 {
+    margin: 20px 20px;
+    font-size: 30px;
+    text-align: center;
+    color: #1c093c;
+  }
+
+  table {
+    position: relative;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 95%;
+    margin-top: 70px;
+    margin: 50px 15px;
+    padding: 30px 20px;
+  }
+
+  td,
+  th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+    </style>
+</head>
+<body>
+   <h1> Items less in stock </h1>
+   <p>Please Refill it</p> 
+<table>
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <tbody>
+        {% for g,h in salemail.items() %}
+        <tr>
+          <td>{{ g }}</td>
+          <td>{{ h }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </tr>
+  </table>
+</body>
+</html>

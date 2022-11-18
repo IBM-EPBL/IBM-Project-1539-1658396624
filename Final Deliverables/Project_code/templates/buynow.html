@@ -1,0 +1,58 @@
+{% extends 'sidebar.html' %} 
+{% block styling %}
+<style>
+*:before,
+*:after{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+    font-family: "Poppins",sans-serif;
+    font-weight: 500;
+}
+body
+    {
+        height:100vh;
+        background:linear-gradient(
+            135deg,#6f6df4,#4c46f5);
+    }
+.buycontainer
+{
+    background-color:#6f6df4;
+    width:95%;
+    min-width:95%;
+    padding:35px 50px;
+    transform:translate(-50%,-50%);
+    position:absolute;
+    left:50%;
+    top:50%;
+    border-radius:10px;
+    border-style: groove;
+    box-shadow: 20px 30px 25px rgba(0,0,0,0.15);
+}
+h1
+{
+    font-size: 30px;
+    text-align: center;
+    color:#f7f5fa;
+    margin: 50px 50px;
+
+}
+p{
+    position:relative;
+    margin:auto;
+    width:100%;
+    text-align:center;
+    color:#fffefe;
+    font-size:25px;
+    margin-top:50px;
+    margin-bottom: 50px;
+    font-weight:400;
+}
+</style>
+{% endblock %} 
+{% block content %}
+<div class="buycontainer">
+    <h1>TOTAL CART VALUE : {{msg}}</h1>
+    <p>THANK YOU FOR PURCHASING </p>
+    <p>!!!DO VISIT AGAIN!!!</p>
+{% endblock %}
